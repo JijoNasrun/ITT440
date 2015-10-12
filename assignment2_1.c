@@ -31,5 +31,5 @@ int main()
 	struct timeval time;
 	socklen_t len2; 
 	a = getsockopt(sock ,SOL_SOCKET,SO_SNDTIMEO,(void *)& time,&len2);
-
+	printf("timeout %d seconds, %ld microseconds\n",time.tv_sec,time.tv_usec);
 }

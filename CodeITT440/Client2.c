@@ -48,7 +48,7 @@ int main (int argc, char *argv[])
 	if (con<0)
 	{perror("accept:");exit(-1);}
 	else if(con>0)
-	{printf("SUCCESS"\n");}
+	{printf("SUCCESS\n");}
 	
 	client = socket(AF_INET,SOCK_STREAM,0);
 	//checking if socket creation failed
@@ -60,7 +60,7 @@ int main (int argc, char *argv[])
 	
 	nCat_client.sin_family =AF_INET;
 	nCat_client.sin_port=htons(5000);
-	nCat_client.sin_addr.s.s_addr=inet_addr("192.168.56.1");
+	nCat_client.sin_addr.s_addr=inet_addr("192.168.56.1");
 	bzero(&nCat_client.sin_zero,8);
 	
 	//connect and error checking if connect failed
@@ -73,7 +73,7 @@ int main (int argc, char *argv[])
 	
 	//receiving file from Ncat remote server
 	
-	printf("[machine 1]" Receiving from 192.168.56.1....\n");
+	printf("[machine 1] Receiving from 192.168.56.1....\n");
 	char *fr_name ="receivedNcat.txt";
 	FILE *fr = fopen(fr_name,"abc");
 	
@@ -115,10 +115,10 @@ int main (int argc, char *argv[])
 		
 		if(!fork())
 		{
-			char *fs_name = receivedNcat.txt";
+			char *fs_name ="receivedNcat.txt";
 			char sndbuf[1024];
 			printf("Sending to client...\n");
-			File *fs = fopen(fs_name,"r");
+			FILE *fs = fopen(fs_name,"r");
 			if(fs==NULL)
 			{
 				printf("ERROR. FILE NOT FOUND");
